@@ -1,0 +1,35 @@
+profit & loss
+
+a simple portfolio tracker
+
+expects a file of transactions "xn.csv" in the same directory
+
+xn schema:
+
+c         | t f a
+----------| -----
+date      | d    
+sym       | s    
+price     | f    
+size      | f    
+commission| f    
+
+fetches prices from Yahoo! Finance and calculates current market value
+and performance for each position and for the whole portfolio
+
+n.b. cash positions can be tracked as a (any) "self-cross rate"
+(price always 1, e.g. EUREUR=X; note that USDUSD=X is currently not
+working at yahoo)
+
+n.b. also that cash positions (always gain/gainp 0) are included in
+overall performance
+
+displays position and portfolio p&l on startup
+
+exits if -q is set; this is meant to support shell aliasing e.g.
+alias pnl='rlwrap ~/src/q/pnl.q -q'
+
+TODO
+
+sales & cashflow
+corporate actions
