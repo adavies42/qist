@@ -1,0 +1,9 @@
+gettid
+
+wrapper for linux gettid system call
+
+handy for figuring out which slave is getting assigned what work by peach
+
+TODO
+
+redo in terms of pthread_self for portability
