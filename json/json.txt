@@ -1,0 +1,8 @@
+json
+
+a json parser
+
+inspired by the original javascript-literal notation design--"parses" by translating into a q
+literal and executing.
+
+try "q person.q" for an example
