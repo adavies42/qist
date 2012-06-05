@@ -4,6 +4,8 @@ wrapper for linux gettid system call
 
 handy for figuring out which slave is getting assigned what work by peach
 
+build as `make BITS=32' for if necessary
+
 TODO
 
 redo in terms of pthread_self for portability
