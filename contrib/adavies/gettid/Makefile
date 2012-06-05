@@ -1,9 +1,22 @@
+UNAME=$(shell uname)
+
 BITS=64
+
+CFLAGS=-std=gnu99 -W -Wall -Werror -Wno-unused-parameter -m$(BITS)
 CPPFLAGS=-I../../../kx/kdb+/c/c
-CFLAGS=-W -Wall -Wno-unused-parameter -m$(BITS)
+LDFLAGS=-shared
+
+ifeq ($(UNAME),Linux)
+	TARGET_ARCH=-fPIC
+else ifeq ($(UNAME),Darwin)
+	TARGET_ARCH=-undefined suppress -flat_namespace
+$(error OS X nyi)
+else
+$(error Unsupported architecture `$(UNAME)')
+endif
 
 %.so: %.c
-	$(CC) $(CPPFLAGS) -shared -fPIC $(CFLAGS) $(OUTPUT_OPTION) $<
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(TARGET_ARCH) $(OUTPUT_OPTION) $<
 
 SO=gettid.so
 
