@@ -1,0 +1,23 @@
+what the function
+
+search for a function in the workspace
+
+e.g.
+
+    q)f:{break}
+    q)f[]
+    {break}
+    'break
+    q))wtf .z.s
+    `..f
+    q))
+
+can see nested lambdas
+
+    q)g:{{break2}x}
+    q)g[]
+    {break2}
+    'break2
+    q))wtf .z.s
+    `..g.lambda
+    q))
