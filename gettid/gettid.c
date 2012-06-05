@@ -3,4 +3,4 @@
 #include "k.h"
 
 // return thread id
-K1(qgettid){R r1(ki(syscall(__NR_gettid)));}
+K1(qgettid){R ki(syscall(__NR_gettid));}
