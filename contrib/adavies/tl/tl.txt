@@ -1,0 +1,7 @@
+table from list
+
+a couple versions of some very basic object creation in C
+
+also t, a very simple extension language
+
+build as `make BITS=32' if necessary
