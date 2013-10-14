@@ -1,0 +1,49 @@
+40 tables
+30 partitioned tables
+7 splayed tables
+3 serialized tables
+1 partition
+~1 billion rows
+~16 billion cells
+avg 39 columns/table
+~15% null/empty cells
+no nesteds other than strings
+
+test boxes:
+16 4-core Xeon 3GHz X5570
+144GB RAM
+ext3 SAN storage
+
+for operational reasons, tests were split between two boxes 
+"rescaled" values are an attempt to better compare the two:
+
+read values for logicalBlocSizes over 17, which were done 
+on a box that was a little less loaded at the time, were 
+multiplied by 1.389728
+
+q)m:{raze{`n`c xkey update n:x from meta x}each tables x}[]
+q)10 xbar select count i by a from m
+a| x   
+-| ----
+ | 1480
+g| 80  
+s| 30  
+q)10 xbar select count i by null f from m
+f| x   
+-| ----
+0| 60  
+1| 1530
+q)10 xbar select count i by"C"^t from m
+t| x  
+-| ---
+C| 130
+b| 30 
+c| 60 
+d| 50 
+f| 680
+h| 10 
+i| 340
+j| 0  
+m| 50 
+p| 30 
+s| 160
