@@ -1,0 +1,7 @@
+compression comparison stats
+
+methodology in notes.txt
+
+load stats.csv with stats.q
+
+pivots and charts in stats.xls
