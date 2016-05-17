@@ -1,0 +1,36 @@
+This is a collection of q scripts from my personal library, providing
+various utilities, interesting functions, and examples of q (and
+occasionally k) programming.
+
+Those scripts suitable for inclusion in a q.q contain a hook call
+as their first line: it executes a nulladic function .lib.d[], if
+such a function exists. It is intended that .lib.d[] contain code
+to switch the workspace from default to something appropriate for
+utility code; e.g. .lib.d:{[]system"d .util"} or
+.lib.d:{[]system"d ",getenv`Q_UTIL_WORKSPACE}.
+
+An attempt has been made to include a header in each such script
+describing which other scripts from the library it needs loaded and which
+functions from them it uses (the "require" line) and which functions
+it provides (the "api" line). The general idea is that some scripts
+in this library may use utility routines from other scripts, and these
+headers should help identify which scripts need to be loaded in order
+to use which other scripts. At the moment, this is strictly advisory,
+and not necessarily fully accurate.
+
+An example q.q loading all such scripts (ignoring path issues):
+
+.lib.d:{system"d .util"}
+\l csl.q
+\l debug.q
+\l hdb_assert.q
+\l histo.q
+\l jrank.q
+\l lines.q
+\l metax.q
+\l statx.q
+\l ungroupx.q
+\l util.q
+\l venn.q
+\l wheretf.q
+\l wtf.q
