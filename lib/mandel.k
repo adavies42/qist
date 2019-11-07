@@ -83,7 +83,6 @@ fh:{0x424d,le[6h$14+#x],0x0000000022000000,x}                                   
 dh:{(,/le'"ihhhh"$12,x,y,1 1),z}                                                / DIB header (OS/2 v1)
 ct:{0xffffff0000000000,x}                                                       / color table (white, black)
 pad:{x,\:((32*-_-w%32)-w:#+x)#0b}                                               / pad rows out to 4 bytes
-/pack:{,/0b/:''8 0N#/:x}                                                         / boolean matrix to packed byte matrix
 pack:{,/0b/:''0N 8#/:x}                                                         / boolean matrix to packed byte matrix
 bmp:{fh dh[#*x;#x]ct pack pad@|x}                                               / BMP renderer: wrapper
 
@@ -145,7 +144,7 @@ c:{rgbhsv .++:'hsv[E[x;y;z];D[x;y;z]]}                                          
 /  z: canvas size (scaled)
 run4:{[p;x;y;z]                                                                 / driver
  f:`ppm`pgm`bmp!(::;avg'';{x>avg/x}@avg'')                                      /  converters
- .q.set[g:*`\:*|`\:p]r:{$[y in!x;x[y]z;'`domain]}[f;*|`\:*|`\:p]c[x;y;z]        /  set global
+ .q.set[g:*`\:*|`\:p]{$[y in!x;x[y]z;'`domain]}[f;*|`\:*|`\:p]c[x;y;z]          /  set global
  write p                                                                        /  save temp
  ![`.;();0b;,g]                                                                 /  drop global
  -1@1_$p}                                                                       /  print file
