@@ -147,9 +147,7 @@ run4:{[p;x;y;z]                                                                 
  .q.set[g:*`\:*|`\:p]r:c[x;y;z]                                                 /  set global
  write p                                                                        /  save temp
  ![`.;();0b;,g]                                                                 /  drop global
- ."\\"," "/:1_'$`:convert,p,o:ce[`png]p                                         /  call convert
- ~p                                                                             /  drop temp
- -1@1_$o}                                                                       /  print final
+ -1@1_$p}                                                                       /  print file
 
 / convenience:
 /  d: destination directory
