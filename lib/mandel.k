@@ -85,7 +85,7 @@ ct:{0xffffff0000000000,x}                                                       
 pad:{x,\:((32*-_-w%32)-w:#+x)#0b}                                               / pad rows out to 4 bytes
 /pack:{,/0b/:''8 0N#/:x}                                                         / boolean matrix to packed byte matrix
 pack:{,/0b/:''0N 8#/:x}                                                         / boolean matrix to packed byte matrix
-bmp:{fh dh[#*x;#x]ct pack pad x}                                                / BMP renderer: wrapper
+bmp:{fh dh[#*x;#x]ct pack pad@|x}                                               / BMP renderer: wrapper
 
 
 / building the rendering plane
