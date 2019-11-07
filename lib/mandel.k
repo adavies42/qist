@@ -79,7 +79,7 @@ ppm:{("P3";" "/:$#:'(+:;::)@\:x;"255")," "/:'" "/:''(-|//#:'''x)$x:$_255*N x}   
 
 / bmp
 le:|0x0\:                                                                       / to little-endian
-fh:{0x424d,le[14+#x],0x0000000022000000,x}                                      / bitmap file header
+fh:{0x424d,le[6h$14+#x],0x0000000022000000,x}                                   / bitmap file header
 dh:{(,/le'"ihhhh"$12,x,y,1 1),z}                                                / DIB header (OS/2 v1)
 ct:{0xffffff0000000000,x}                                                       / color table (white, black)
 pad:{x,\:((32*-_-w%32)-w:#+x)#0b}                                               / pad rows out to 4 bytes
