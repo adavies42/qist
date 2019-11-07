@@ -144,7 +144,8 @@ c:{rgbhsv .++:'hsv[E[x;y;z];D[x;y;z]]}                                          
 /  y: y coordinate
 /  z: canvas size (scaled)
 run4:{[p;x;y;z]                                                                 / driver
- .q.set[g:*`\:*|`\:p]r:c[x;y;z]                                                 /  set global
+ f:`ppm`pgm`bmp!(::;avg'';{x>avg/x}@avg'')                                      /  converters
+ .q.set[g:*`\:*|`\:p]r:{$[y in!x;x[y]z;'`domain]}[f;*|`\:*|`\:p]c[x;y;z]        /  set global
  write p                                                                        /  save temp
  ![`.;();0b;,g]                                                                 /  drop global
  -1@1_$p}                                                                       /  print file
