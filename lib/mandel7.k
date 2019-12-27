@@ -61,7 +61,7 @@
 
 
 / files
-write:{x 1:$[e like"p?m";spnm;::](. e:*|"."\:*|"/"\:$x)y}                       / sort of like .q.save (but with data on y)
+write:{x 1:$[e like"p?m";"\n"/:;::](. e:*|"."\:*|"/"\:$x)y}                     / sort of like .q.save (but with data on y)
 ce:{"/"/:@[y;(#y:"/"\:$$[|/"/"=$y;y;"./",$y])-1;{"."/:(-1_"."\:x),,y};$x]}      / change extension
 
 
@@ -94,7 +94,7 @@ g:{S(::;|:)@'a'[z;*:'(x;y);(*|:)'(x;y)]}                                        
 
 
 / complex math
-u:{(-;+).'(x*y;x*(|y))}                                                         / complex multiply
+u:{(-;+).'(x*y;x*|y)}                                                           / complex multiply
 s:{(((x*x)-y*y);2*x*y)}.                                                        / complex square
 n:{sqrt(x*x)+y*y}.                                                              / complex norm
 
@@ -103,10 +103,6 @@ n:{sqrt(x*x)+y*y}.                                                              
 l:{if[~.*|$x;` 0:,$x]}                                                          / log
 mux:{(y*\:x)+z*\:~x}                                                            / matrix ternary
 signum:{(x>0)-x<0}                                                              / from q
-ltrim:{( +/&\" "= x)_x}                                                         / ditto
-rtrim:{(-+/&\" "=|x)_x}                                                         / ditto
-modx:{(x*y<0)+(signum y)*x mod abs y}                                           / workaround for mod of negative float
-spnm:{"\n"/:@[`m@x;0 1 2;rtrim],,""}                                            / string from pgm/ppm
 
 
 
@@ -131,9 +127,9 @@ D:{da 150 de[2.0]/dy g[x;y;z]}                                                  
 
 
 / color manipulation
-hsv:{+:'+(modx[360](modx[360]360*0|2 log x)+20*modx[2]x;1;N y)}                 / iterations, distance
+hsv:{+:'+(360\(360\360*0|2 log x)+20*2\x;1;N y)}                                / iterations, distance
 
-rgbhsv:{[x;y;z]c:z*y;hp:x%60;x:c*(1-abs(modx[2]hp)-1)                           / http://en.wikipedia.org/wiki/HSL_and_HSV#From_HSV
+rgbhsv:{c:z*y;hp:x%60;x:c*(1-abs(2\hp)-1)                                       / http://en.wikipedia.org/wiki/HSL_and_HSV#From_HSV
  (z-c)+(+:'+(c;x;0))@''((!6)!(0 1 2;1 0 2;2 0 1;2 1 0;1 2 0;0 2 1))@_hp}        /  cont'd
 
 c:{rgbhsv .++:'hsv[E[x;y;z];D[x;y;z]]}                                          / colorize (N.B. caller of algos)
@@ -168,7 +164,7 @@ run:{[d;f;e;x;y;z;s]run4["/"/:(d;"."/:("_"/:$f,z;$e));x;y;z*:s]}                
 
 
 / more fun with fractals
-sier1:{$[&/~0<x,y;1;&/1=3 mod x,y;0;sier1 .`i$(x,y)%3]};sier:sier1 .''{x,/:\:x}@!: / sierpinski carpet
+sier1:{$[&/~0<x,y;1;&/1=3\x,y;0;sier1 .`i$(x,y)%3]};sier:sier1 .''{x,/:\:x}@!:  / sierpinski carpet
 
 \
 
