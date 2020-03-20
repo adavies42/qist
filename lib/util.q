@@ -887,6 +887,15 @@ rexcept:{y except x}
 //  6 3 4 9 2 0 8 1 5 7
 shuf:{(neg count x)?x}
 
+///
+// cut filled
+// appends nulls to data before cutting so result will be rectangular
+// undefined with non-atom x
+// @param x width
+// @param y data
+// @return x cut y, with the last row filled with appropriate nulls if necessary
+cutf:{x cut y,((x-(count y)mod x)mod x)#0#y}
+
 \d .help
 
 ///
