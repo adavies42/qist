@@ -37,7 +37,7 @@ if[type key`.lib.d;.lib.d[]]
 / api metax mmetax mmetaxs denumt
 
 ///
-// About: metaa.q
+// About: metax.q
 // Extensions to meta to provide more information or to work on other data types.
 ///
 
