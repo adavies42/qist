@@ -86,6 +86,10 @@ pad:{x,\:((32*-_-w%32)-w:#+x)#0b}                                               
 pack:{,/0b/:''0N 8#/:x}                                                         / boolean matrix to packed byte matrix
 bmp:{fh dh[#*x;#x]ct pack pad@|x}                                               / BMP renderer: wrapper
 
+/ png
+{."\\l ",1_$`/:(*`\:-1!`$*-3#. .z.s),x}`png.q                                   / load png library
+png:{.finos.png.format[("i"$#*x;"i"$#x;8i;`truecolor;0i;0i;`none);_255*x]}      / delegate
+
 
 / building the rendering plane
 a:{y+(!x)*(z-y)%x-1}                                                            / axis of x steps from y to z
@@ -143,8 +147,8 @@ c:{rgbhsv .++:'hsv[E[x;y;z];D[x;y;z]]}                                          
 /  y: y coordinate
 /  z: canvas size (scaled)
 run4:{[p;x;y;z]                                                                 / driver
- f:`ppm`pgm`pbm`bmp!(::;avg'';{x>avg/x}@avg'';{x>avg/x}@avg'')                  /  converters
- .q.set[g:*`\:*|`\:p]{$[y in!x;x[y]z;'`domain]}[f;*|`\:*|`\:p]c[x;y;z]          /  set global
+ f:``pgm`pbm`bmp!(::;avg'';{x>avg/x}@avg'';{x>avg/x}@avg'')                     /  converters
+ .q.set[g:*`\:*|`\:p]f[*|`\:*|`\:p]c[x;y;z]                                     /  set global
  write p                                                                        /  save temp
  ![`.;();0b;,g]                                                                 /  drop global
  -1@1_$p}                                                                       /  print file
@@ -170,8 +174,8 @@ q)sier:{{while[(x>0)|y>0;$[(1=x mod 3)&1=y mod 3;:0b;[x:x div 3;y:y div 3]]];1b}
 / some example runs
 
 / common params
-dst:`:/u/m/spgrisk/daviaaro/mandel3
-fmt:`ppm
+dst:`:/u/m/spgrisk/daviaaro/mandel4
+fmt:`png
 scale:1
 
 / the whole bug
