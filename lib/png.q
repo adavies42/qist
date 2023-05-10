@@ -536,45 +536,14 @@ if[not .finos.png.priv.zlib_test"...";
 
   0x89504e470d0a1a0a,raze`IHDR`IDAT`IEND f'(x;y;::)}
 
-/show .finos.png.parse`:4x1.png
-/show .finos.png.parse`:1x4.png
-/show .finos.png.parse`:2x2.png
-/show .finos.png.parse`:a.png
-
-/`:2x2.q.png 1:.finos.png.format[`width`height`bit_depth`color_type`compression_method`filter_method`interlace_method!(2i;2i;8i;`truecolor;0i;0i;`none);((255 0 0i;0 255 0i);(0 0 255i;0 0 0i))]
-
 \
 
-89 50 4e 47 0d 0a 1a 0a
+show .finos.png.parse`:4x1.png
+show .finos.png.parse`:1x4.png
+show .finos.png.parse`:2x2.png
+show .finos.png.parse`:a.png
 
-00 00 00 0d
-49 48 44 52
-00 00 00 02 00 00 00 02 08 02 00 00 00
-fd d4 9a 73
-
-00 00 00 01
-73 52 47 42
-00
-ae ce 1c e9
-
-00 00 00 04
-67 41 4d 41
-00 00 b1 8f
-0b fc 61 05
-
-00 00 00 09
-70 48 59 73
-00 00 0e c3 00 00 0e c3 01
-c7 6f a8 64
-
-00 00 00 11
-49 44 41 54
-18 57 63 f8 cf c0 00 c6 40 82 81 01 00 19 f4 02 fe
-7e 9f 5f 96
-
-00 00 00 00
-49 45 4e 44
-ae 42 60 82
+`:2x2.q.png 1:.finos.png.format[`width`height`bit_depth`color_type`compression_method`filter_method`interlace_method!(2i;2i;8i;`truecolor;0i;0i;`none);((255 0 0i;0 255 0i);(0 0 255i;0 0 0i))]
 
 \
 
